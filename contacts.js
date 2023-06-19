@@ -8,7 +8,14 @@ async function listContacts() {
   const data = await fs.readFile(contactsPath);
   return JSON.parse(data);
 }
+async function getContactById(contactId) {
+  // Повертає об'єкт контакту з таким id. Повертає null, якщо контакт з таким id не знайдений.
+  const contacts = await listContacts();
+  result = contacts.find((item) => item.id === contactId);
+  return result || null;
+}
 
 module.exports = {
   listContacts,
+  getContactById,
 };
