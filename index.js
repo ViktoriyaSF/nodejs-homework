@@ -6,12 +6,19 @@ async function invokeAction({ action, id, name, email, phone }) {
       const allContacts = await contacts.listContacts();
       return console.table(allContacts);
       break;
+
     case "get":
       const findContact = await contacts.getContactById(id);
       return console.log(findContact);
       break;
+
+    case "remove":
+      const deleteContacts = await contacts.removeContact(id);
+      return console.log(deleteContacts);
+      break;
   }
 }
 
-invokeAction({ action: "list" });
-invokeAction({ action: "get", id: "05olLMgyVQdWRwgKfg5J6" });
+// invokeAction({ action: "list" });
+// invokeAction({ action: "get", id: "05olLMgyVQdWRwgKfg5J6" });
+// invokeAction({ action: "remove", id: "qdggE76Jtbfd9eWJHrssH" });
