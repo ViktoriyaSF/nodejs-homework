@@ -1,11 +1,14 @@
 const fs = require("fs").promises;
-const contactsPath = path.join(__dirname, "contacts.json");
+const path = require("path");
 
-function listContacts() {
-  // ...твій код. Повертає масив контактів.
-    
+const contactsPath = path.join(__dirname, "db/contacts.json");
+
+async function listContacts() {
+  // Повертає масив контактів.
+  const data = await fs.readFile(contactsPath);
+  return JSON.parse(data);
 }
 
-module.exports{ 
-    listContacts(),
+module.exports = {
+  listContacts,
 };
